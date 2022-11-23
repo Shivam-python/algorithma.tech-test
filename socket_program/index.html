@@ -1,0 +1,47 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="chat-popup" id="myForm">
+        <h1>Chat</h1>
+            <div id="div1">
+
+            </div>
+          <label for="msg"><b>Message</b></label>
+          <textarea placeholder="Type message.." name="msg" id="msg" required></textarea>
+      
+          <button class="btn" onClick="sendMsg()">Send</button>
+      </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+    <script>
+      const socket = io("http://localhost:8080");
+
+      function sendMsg() {
+        var message = document.getElementById('msg').value;
+        console.log(message)
+        socket.emit("msg", message);
+        var tag = document.createElement("p");
+        var text = document.createTextNode("Me : "+message);
+        tag.appendChild(text);
+        var element = document.getElementById("div1");
+        element.appendChild(tag);
+      }
+    </script>
+    <script>
+        socket.on("message", function(data) {
+            var tag = document.createElement("p");
+        var text = document.createTextNode("server : "+data);
+        tag.appendChild(text);
+        var element = document.getElementById("div1");
+        element.appendChild(tag);
+            });
+    </script>
+  </body>
+</html>
