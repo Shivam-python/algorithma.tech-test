@@ -8,4 +8,4 @@ Each assignment's solution is added in different folder.
 
 # How to Run the programs : 
 1. Create virtual environment and install dependencies from requirements.txt.
-2. Execute python <file-name> in terminal and you'll be able to see the desired output. For socket, client is a web page. Open localhost:8080 to see the webpage.
+2. Execute python file-name in terminal and you'll be able to see the desired output. For socket, client is a web page. Open localhost:8080 to see the webpage.
